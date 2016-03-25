@@ -36,21 +36,22 @@
 
 
         #bodyArea1 {
-            background-color:coral;
-            width:auto;
-            height:1300px;
-            top:200px;
-            transition:.2s ease;
-        }
-        #bodyArea2 {
             background-color:bisque;
             width:auto;
-            height:1300px;
+            height:500px;
             transition:.2s ease;
+            position:relative;
+        }
+        #bodyArea2 {
+            background-color:coral;
+            width:auto;
+            height:3000px;
+            transition:.2s ease;
+            position:relative;
         }
         #surpriseImg1 {
             position:absolute;
-            top:100px;
+            top:0;
             left:-400px;
             transition:.5s ease;
 
@@ -83,6 +84,7 @@
         }
 
         /* hover */
+/*
         header:hover {
             background-color:antiquewhite;
         }
@@ -94,6 +96,8 @@
         #bodyArea1:hover {
             background-color:firebrick;
         }
+*/
+/*
         #bodyArea1:hover #surpriseImg1 {
             left:0;
         }
@@ -106,6 +110,7 @@
         #bodyArea2:hover{
             background-color:chocolate;
         }
+*/
 
         /* active */
         #bodyArea1:active #surpriseImg1 {
@@ -127,20 +132,52 @@
             animation-direction: alternate;
         }
 
+        /* addClass */
+
+        #surpriseImg1.slide1{
+            left:0;
+        }
+
     </style>
     </head>
 
     <header></header>
     <body ng-app="app" ng-controller="testController">
-        <div id="bodyArea1">
-            <img id="surpriseImg1" src="img/BBB.png" alt="깜짝이미지1">
-            <img id="surpriseImg2" src="img/%ED%99%8D%EC%88%98%ED%98%95.png" alt="깜짝이미지2">
-            <img id="surpriseImg3" src="img/me.png" alt="깜짝이미지3">
-
-        </div><!--//bodyArea1-->
+        <div id="bodyArea1"></div><!--//bodyArea1-->
         <div id="bodyArea2">
-
+            <img id="surpriseImg1" src="img/BBB.png" alt="깜짝이미지1">
         </div><!--//bodyArea2-->
+        <div id="bodyArea3">
+            <img id="surpriseImg2" src="img/%ED%99%8D%EC%88%98%ED%98%95.png" alt="깜짝이미지2">
+        </div><!--//bodyArea3-->
+        <div id="bodyArea4">
+            <img id="surpriseImg3" src="img/me.png" alt="깜짝이미지3">
+        </div><!--//bodyArea4-->
+
+        <script src="js/jquery.js"></script>
+        <script>
+            var $header = $("header");
+            var $bodyArea1= $("#bodyArea1");
+            var $bodyArea2= $("#bodyArea2");
+        $(window).scroll(function(){
+            var docScrollTop = $(document).scrollTop(),
+                wScrollTop = $(window).scrollTop();
+            var body1Height = $bodyArea1.height(),
+                headerHeight = $header.height();
+            //alert($(window).scrollTop());
+            //console.log(docScrollTop);
+            //console.log(wScrollTop);
+            //console.log($(document).height()-wScrollTop);
+            if(wScrollTop>=$bodyArea2.offset().top-$header.height()){
+            //alert("스크롤위치가 문서기준 200을 넘었습니다.");
+                $("#surpriseImg1").addClass("slide1");
+
+            }
+
+            //alert(scrollTop);
+        });
+
+        </script>
 
     </body>
 
