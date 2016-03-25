@@ -20,6 +20,7 @@
             top:0;
             left:0;
             transition:.2s ease;
+            z-index:99;
         }
 
 
@@ -47,6 +48,39 @@
             height:1300px;
             transition:.2s ease;
         }
+        #surpriseImg1 {
+            position:absolute;
+            top:100px;
+            left:-400px;
+            transition:.5s ease;
+
+        }
+        #surpriseImg2 {
+            position:absolute;
+            top:100px;
+            right:-400px;
+            transition:.5s ease;
+            transform: rotate(0deg);
+        }
+        #surpriseImg3 {
+            position:absolute;
+            top:-400px;
+            left:400px;
+            transition:.5s ease;
+            transform-origin: bottom;
+        }
+        @keyframes surprise1 {
+            from {left:0}
+            to{left:-100px};
+        }
+        @keyframes surprise2 {
+            from {transform:rotate(0deg)}
+            to{transform:rotate(360deg)};
+        }
+        @keyframes surprise3 {
+            from {transform:scale(1)}
+            to{transform:scale(2)};
+        }
 
         /* hover */
         header:hover {
@@ -60,26 +94,55 @@
         #bodyArea1:hover {
             background-color:firebrick;
         }
+        #bodyArea1:hover #surpriseImg1 {
+            left:0;
+        }
+        #bodyArea1:hover #surpriseImg2 {
+            right:0;
+        }
+        #bodyArea1:hover #surpriseImg3 {
+            top:200px;
+        }
         #bodyArea2:hover{
             background-color:chocolate;
+        }
+
+        /* active */
+        #bodyArea1:active #surpriseImg1 {
+            animation-duration: .3s;
+            animation-name:surprise1;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+        #bodyArea1:active #surpriseImg2 {
+            animation-duration: 1s;
+            animation-name:surprise2;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+        #bodyArea1:active #surpriseImg3 {
+            animation-duration: 1s;
+            animation-name:surprise3;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
         }
 
     </style>
     </head>
 
     <header></header>
-    <body>
+    <body ng-app="app" ng-controller="testController">
         <div id="bodyArea1">
+            <img id="surpriseImg1" src="img/BBB.png" alt="깜짝이미지1">
+            <img id="surpriseImg2" src="img/%ED%99%8D%EC%88%98%ED%98%95.png" alt="깜짝이미지2">
+            <img id="surpriseImg3" src="img/me.png" alt="깜짝이미지3">
 
         </div><!--//bodyArea1-->
-
-    </body>
-
-    <body>
         <div id="bodyArea2">
 
-        </div><!--//bodyArea1-->
+        </div><!--//bodyArea2-->
 
     </body>
+
     <footer></footer>
 </html>
