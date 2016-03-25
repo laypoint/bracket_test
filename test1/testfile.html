@@ -45,6 +45,27 @@
         #bodyArea2 {
             background-color:coral;
             width:auto;
+            height:800px;
+            transition:.2s ease;
+            position:relative;
+        }
+        #bodyArea3 {
+            background-color:azure;
+            width:auto;
+            height:800px;
+            transition:.2s ease;
+            position:relative;
+        }
+        #bodyArea4 {
+            background-color:cadetblue;
+            width:auto;
+            height:800px;
+            transition:.2s ease;
+            position:relative;
+        }
+        #bodyArea5 {
+            background-color:darkcyan;
+            width:auto;
             height:3000px;
             transition:.2s ease;
             position:relative;
@@ -65,7 +86,7 @@
         }
         #surpriseImg3 {
             position:absolute;
-            top:-400px;
+            top:0;
             left:400px;
             transition:.5s ease;
             transform-origin: bottom;
@@ -113,6 +134,7 @@
 */
 
         /* active */
+/*
         #bodyArea1:active #surpriseImg1 {
             animation-duration: .3s;
             animation-name:surprise1;
@@ -131,12 +153,22 @@
             animation-iteration-count: infinite;
             animation-direction: alternate;
         }
+*/
 
         /* addClass */
 
         #surpriseImg1.slide1{
             left:0;
         }
+        #surpriseImg2.slide2{
+            right:0;
+        }
+        header.upslide {
+            height:0;
+        }
+
+
+
 
     </style>
     </head>
@@ -153,12 +185,17 @@
         <div id="bodyArea4">
             <img id="surpriseImg3" src="img/me.png" alt="깜짝이미지3">
         </div><!--//bodyArea4-->
+        <div id="bodyArea5">
+        </div><!--//bodyArea5-->
 
         <script src="js/jquery.js"></script>
         <script>
             var $header = $("header");
             var $bodyArea1= $("#bodyArea1");
             var $bodyArea2= $("#bodyArea2");
+
+
+            //랜덤
         $(window).scroll(function(){
             var docScrollTop = $(document).scrollTop(),
                 wScrollTop = $(window).scrollTop();
@@ -171,7 +208,13 @@
             if(wScrollTop>=$bodyArea2.offset().top-$header.height()){
             //alert("스크롤위치가 문서기준 200을 넘었습니다.");
                 $("#surpriseImg1").addClass("slide1");
-
+                $bodyArea2.css("background-color","#222222");
+                $header.addClass("upslide");
+            }else{
+                $header.removeClass("upslide");
+            }
+            if(wScrollTop>=$("#bodyArea3").offset().top-$header.height()){
+                $("#surpriseImg2").addClass("slide2");
             }
 
             //alert(scrollTop);
